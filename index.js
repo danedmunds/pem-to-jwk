@@ -4,7 +4,7 @@ process.stdin.setEncoding('utf8')
 let args = process.argv.splice(2)
 const publicOnly = args.includes('--public')
 const wrapInJwks = args.includes('--jwks-out')
-const pretty = args.includes('--pretty') || false
+const pretty = args.includes('--pretty')
 
 let data
 process.stdin.on('readable', () => {
