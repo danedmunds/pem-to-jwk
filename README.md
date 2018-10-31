@@ -3,6 +3,8 @@ Converts PEM formatted keys to JWK
 
 Uses [node-jose](https://github.com/cisco/node-jose) to convert PEM formatted crypto keys to [JWK](https://tools.ietf.org/html/rfc7517) format.
 
+https://hub.docker.com/r/danedmunds/pem-to-jwk/
+
 ## Options
 
 - `--public` outputs the public representation only
