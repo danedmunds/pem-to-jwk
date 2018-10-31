@@ -5,4 +5,5 @@ WORKDIR /app
 
 COPY . /app
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]
+CMD []
