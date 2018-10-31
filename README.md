@@ -9,33 +9,27 @@ https://hub.docker.com/r/danedmunds/pem-to-jwk/
 
 - `--public` outputs the public representation only
 - `--jwks-out` outputs the key wrapped in the [JWKS](https://tools.ietf.org/html/rfc7517) structure
+- `--pretty` outputs the results in an easy-to-read format
 
 ## Sample usage
 ```
 > openssl ecparam -name secp384r1 -genkey -noout | docker run -i danedmunds/pem-to-jwk:latest
+{"kty":"EC","kid":"LlMxHk_9inau_uVWXNml7JijPYnICi8iaJBS8JiMgRc","crv":"P-384","x":"BJdH_VYdDAnwW7a1M1yKMIyyQW2gJnyoNKQ2GVAWbl5w-mwUSF58i4rK6t7HWgD6","y":"OyG13CVNkP_TjxhUH0U567mzY_CyyXneikv5AXiMHOT0xWUkS7IChm1mtLl50W-8","d":"eBYccpIgxYTwCJfYnm8vQBNX5BLo15plucJeLGg_6bCw4j7Z-qplo9y2GCCI_mNM"}
+```
+
+```
+> openssl ecparam -name secp384r1 -genkey -noout | docker run -i danedmunds/pem-to-jwk:latest --public --pretty
 {
   "kty": "EC",
-  "kid": "LDKfPp9PVFjv9NztmlKdaq97450AwxjdXLllBqg4sro",
+  "kid": "poTlaX5_RzO4okPyFn4yWfJKlTazLlQFv3s8wKWJ1mQ",
   "crv": "P-384",
-  "x": "8X7IwpgYSmKYAonNPSVPXdNH6aWB3TcAKji4Lf8bkfDDXmI4XAGuxczahZYe2aSi",
-  "y": "R3Gl11-RPVF17JrntdNpUw2VzmmyWRnv_rTgUXn-AuEVwxpazmx31W8o3olOQ5G-",
-  "d": "PGE88usv2aVuDcsvzLBt4R7xYfIWHX4nmd8yVOhdq3FD5NC_1bYJFfyGHabj3OEf"
+  "x": "oNiu12z1eKmKB14rh4y_UCgvG4s9GJKdphTPMetGutcrvvIVPyjfs8FTfrVZ-13v",
+  "y": "tboldX7-Iu5XfZwykR65FnWJu3AB5dx_VI677rvmSPb3uxQMzN9Y5A-EJyCe2uM9"
 }
 ```
 
 ```
-> openssl ecparam -name secp384r1 -genkey -noout | docker run -i danedmunds/pem-to-jwk:latest --public
-{
-  "kty": "EC",
-  "kid": "LDKfPp9PVFjv9NztmlKdaq97450AwxjdXLllBqg4sro",
-  "crv": "P-384",
-  "x": "8X7IwpgYSmKYAonNPSVPXdNH6aWB3TcAKji4Lf8bkfDDXmI4XAGuxczahZYe2aSi",
-  "y": "R3Gl11-RPVF17JrntdNpUw2VzmmyWRnv_rTgUXn-AuEVwxpazmx31W8o3olOQ5G-"
-}
-```
-
-```
-> docker run -i danedmunds/pem-to-jwk:latest <<EOF
+> docker run -i danedmunds/pem-to-jwk:latest --pretty <<EOF
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEAzremgrCTOkuP6TJwwx+tre/wngN7K0i++Cbno89MRcCO7rl/
 FhCCNVdjnPTBDPMJLcOWNnBknIFlCRmep9Z+Q4hH/hnXsTCZ1TI2aBdApf8/Q7Ge
@@ -79,7 +73,7 @@ EOF
 ```
 
 ```
-docker run -i danedmunds/pem-to-jwk:latest --public <<EOF
+docker run -i danedmunds/pem-to-jwk:latest --public --pretty <<EOF
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEAzremgrCTOkuP6TJwwx+tre/wngN7K0i++Cbno89MRcCO7rl/
 FhCCNVdjnPTBDPMJLcOWNnBknIFlCRmep9Z+Q4hH/hnXsTCZ1TI2aBdApf8/Q7Ge
