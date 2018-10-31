@@ -8,6 +8,7 @@ https://hub.docker.com/r/danedmunds/pem-to-jwk/
 ## Options
 
 - `--public` outputs the public representation only
+- `--jwks-out` outputs the key wrapped in the [JWKS](https://tools.ietf.org/html/rfc7517) structure
 
 ## Sample usage
 ```
