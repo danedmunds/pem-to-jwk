@@ -20,7 +20,7 @@ process.stdin.on('end', () => {
       let res = result.toJSON(!publicOnly)
       if (wrapInJwks) {
         res = {
-          keys: res
+          keys: [ res ]
         }
       }
       let output = pretty ? JSON.stringify(res, null, 2) : JSON.stringify(res)
