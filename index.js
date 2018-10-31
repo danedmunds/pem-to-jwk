@@ -4,6 +4,7 @@ process.stdin.setEncoding('utf8')
 let args = process.argv.splice(2)
 const publicOnly = args.includes('--public')
 const wrapInJwks = args.includes('--jwks-out')
+const pretty = args.includes('--pretty') || false
 
 let data
 process.stdin.on('readable', () => {
@@ -22,6 +23,7 @@ process.stdin.on('end', () => {
           keys: res
         }
       }
-      console.log(JSON.stringify(res, null, 2))
+      let output = pretty ? JSON.stringify(res, null, 2) : JSON.stringify(res)
+      console.log(output)
     })
 })
